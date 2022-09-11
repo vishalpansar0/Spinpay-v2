@@ -159,6 +159,7 @@
 /* register page css starts */
 
 .register-container-body {
+    /* margin-top:80px ; */
     height: 100vh;
     background-color: #101010;
 }
@@ -177,6 +178,7 @@
 }
 
 .reg-role-btn {
+    /* background-color: white; */
     width: 150px;
     border: none;
     padding: 10px;

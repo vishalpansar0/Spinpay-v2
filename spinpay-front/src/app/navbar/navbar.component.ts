@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     console.log(window.location.href);
     this.current_location = window.location.href;
-    if(this.current_location == environment.baseUrl){
+    if(this.current_location == environment.baseUrl || this.current_location != environment.baseUrl+'login'){
       this.isLogin = true;
     }
   }

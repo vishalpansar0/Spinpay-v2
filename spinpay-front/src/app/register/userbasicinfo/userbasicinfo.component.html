@@ -1,1 +1,113 @@
-<p>userbasicinfo works!</p>
+<div class="register-container-body">
+    <app-navbar></app-navbar>
+    <div class="register-main-body">
+        <div class="alert alert-danger text-center" [class.d-none]="allValCheck" id="errorDiv" style="padding:0%;">{{errmsg}}</div>
+        <div class="container reg-div-1">
+            <div>
+                {{registerUserInfoForm.value | json}}
+                <form [formGroup]="registerUserInfoForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <h3 class="mt-5" style="font-family:myFirstFont;color:white">join as
+                        a&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="register-role-btn-left reg-role-btn"  id="lenderRole" [class.selectedRole]="isRoleOne" (click)="selectrole($event,3)">lender</button><button
+                            class="register-role-btn-right reg-role-btn" id="borrowerRole" [class.selectedRole]="isRoleTwo" (click)="selectrole($event,4)">borrower</button>
+                    </h3>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <input type="text" [class.cborder]="registerUserInfoForm.get('name')?.invalid && registerUserInfoForm.get('name')?.touched" id="username" formControlName="name" placeholder="enter full name" required>
+                            <small class="form-text text-muted">name should be as per in your aadhar card.</small>&nbsp;&nbsp;
+                            <small *ngIf="name?.invalid && name?.touched && name?.errors?.['required']" class="text-danger">name is required.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <input type="text" id="usermail" formControlName="useremail" placeholder="enter email" required>
+                            <small *ngIf="useremail?.invalid && useremail?.touched && useremail?.errors?.['required']" class="text-danger">email is required.</small>
+                            <small *ngIf="useremail?.invalid && useremail?.touched && useremail?.errors?.['email']" class="text-danger">should be an email.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <input type="password" id="userpassword" formControlName="userpassword" placeholder="create a new password" required>
+                            <small class="form-text text-muted">password should contain at least 8 characters.</small>
+                            <small *ngIf="userpassword?.invalid && userpassword?.touched && userpassword?.errors?.['required']" class="text-danger">password is required.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <input type="password" id="userpasswordcnf" formControlName="userpasswordcnf" placeholder="confirm your password" required>
+                            <small *ngIf="userpasswordcnf?.invalid && userpasswordcnf?.touched && userpasswordcnf?.errors?.['required']" class="text-danger">confirm password is required.</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <input type="tel" id="userphone" formControlName="userphone" placeholder="enter mobile number" required>
+                            <small *ngIf="userphone?.invalid && userphone?.touched && userphone?.errors?.['required']" class="text-danger">phone number is required.</small>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <button class="btn capbtn" id="joinSpinpayBtn" style="float:right">join</button>
+                            <div class="loader mt-2" id="joinBtnLoader"
+                                style="display:none;float:right;margin-right:10%;"></div>
+                                <p style="color:white">By joining, you are aggree to our <a target="blank" href="">terms & conditions</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+                <div class="row mt-4" style="display:none" id="otpSubmitDiv">
+                    <div class="col-md-6">
+                        <div class="inputDiv">
+                            <div class="row mt-4">
+                                <div class="col-3">
+                                    <input class="text-center" id="first" style="color:white"
+                                        onkeyup="movetoNext(this, 'second',1)" type="text" maxlength="1">
+                                </div>
+                                <div class="col-3">
+                                    <input class="text-center" id="second" style="color:white" type="text"
+                                        onkeyup="movetoNext(this, 'third',2)" maxlength="1">
+                                </div>
+                                <div class="col-3">
+                                    <input class="text-center" id="third" style="color:white" type="text"
+                                        onkeyup="movetoNext(this, 'fourth',3)" maxlength="1">
+                                </div>
+                                <div class="col-3">
+                                    <input class="text-center" id="fourth" style="color:white" type="text"
+                                        onkeyup="movetoNext(this, 'fourth',4)" maxlength="1">
+                                </div>
+
+                            </div>
+                            <small class="form-text text-muted">an OTP has been sent to your email, enter
+                                here.</small><br>
+                            <small class="form-text text-muted">if you have entered wrong email, please refresh and
+                                write again.</small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputDiv mt-4">
+                            <button class="btn capbtn" id="submitOtpBtn" style="float:right">submit otp</button>
+                            <div class="loader mt-2" id="submitOtpLoader"
+                                style="display:none;float:right;margin-right:10%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    
+                    
+                </div>
+               
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

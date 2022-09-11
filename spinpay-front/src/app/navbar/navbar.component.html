@@ -1,11 +1,11 @@
-<div class="navbar fixed-top" id="nav">
+<div class="navbar" id="nav">
     <div class="container">
       <div class="logo-container">
         <a routerLink="/" style="text-decoration:none;color:white">SpinPay</a>
       </div>
       <div class="menu-container">
         <h4 *ngIf="isLogin; else registerlink"><a routerLink="/login">login</a></h4>
-        <ng-template #registerlink><h4><a routerLink="/login">register</a></h4></ng-template>
+        <ng-template #registerlink><h4><a routerLink="/register">register</a></h4></ng-template>
      </div>
     </div>
 </div>

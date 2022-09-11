@@ -1,16 +1,8 @@
+
 <div class="register-container-body">
-    <div class="navbar" style="height:12%">
-        <div class="container">
-            <div class="logo-container">
-                SpinPay
-            </div>
-            <div class="menu-container">
-                <h4><a href="">register</a></h4>
-            </div>
-        </div>
-    </div>
+    <app-navbar></app-navbar>
     <div class="register-main-body">
-            <div class="alert alert-danger text-center" id="errorDiv" style="padding:0%;">
+            <div class="alert alert-danger text-center" id="errorDiv" style="padding:0%;display: none;">
     </div>
    <div class="alert alert-danger text-center" id="errorDiv" style="padding:0%;display:none"></div>
         <div class="container">
@@ -19,15 +11,13 @@
                     <form method="POST" action="">
                         <h3 id="login-heading">login</h3>
                         <div class="inputDiv mt-4">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                            <input id="email" type="email"
                                 name="email" value="" placeholder="enter your email here" required autocomplete="email" autofocus>
     
                         </div>
 
                         <div class="inputDiv mt-4">
-                            <input id="password" placeholder="enter your password here" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                            
+                            <input id="password" placeholder="enter your password here" type="password" name="password" required autocomplete="current-password">
                                     <span class="invalid-feedback" role="alert">
                                         <strong>   </strong>
                                     </span>
@@ -147,6 +137,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
