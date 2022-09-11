@@ -4,7 +4,6 @@
         <div class="alert alert-danger text-center" [class.d-none]="allValCheck" id="errorDiv" style="padding:0%;">{{errmsg}}</div>
         <div class="container reg-div-1">
             <div>
-                {{otpForm.value | json}}
                 <form [formGroup]="registerUserInfoForm" (ngSubmit)="onSubmit()">
                 <div class="row">
                     <h3 class="mt-5" style="font-family:myFirstFont;color:white">join as

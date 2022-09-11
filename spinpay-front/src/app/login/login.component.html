@@ -2,39 +2,35 @@
 <div class="register-container-body">
     <app-navbar></app-navbar>
     <div class="register-main-body">
-            <div class="alert alert-danger text-center" id="errorDiv" style="padding:0%;display: none;">
+            <div class="alert alert-danger text-center" id="errorDiv" [class.d-none]="!errFlag" style="padding:0%;">{{errmsg}}
     </div>
    <div class="alert alert-danger text-center" id="errorDiv" style="padding:0%;display:none"></div>
         <div class="container">
             <div class="login-main-div" style="height:100%;">
                 <div class="login-container">
-                    <form method="POST" action="">
+                    <form [formGroup]="loginForm" (ngSubmit)="userLogin()">
                         <h3 id="login-heading">login</h3>
                         <div class="inputDiv mt-4">
-                            <input id="email" type="email"
-                                name="email" value="" placeholder="enter your email here" required autocomplete="email" autofocus>
-    
+                            <input formControlName="email" id="email" type="email"
+                                name="email" value="" placeholder="enter your email here">
                         </div>
-
-                        <div class="inputDiv mt-4">
-                            <input id="password" placeholder="enter your password here" type="password" name="password" required autocomplete="current-password">
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>   </strong>
-                                    </span>
-              
+                        <small *ngIf="email?.invalid && email?.touched && email?.errors?.['required']" class="text-danger">email is required.</small>
+                                <small *ngIf="email?.invalid && email?.touched && email?.errors?.['email']" class="text-danger">should be an email.</small>
+                        <div class="inputDiv mt-3">
+                            <input formControlName="password" id="password" placeholder="enter your password here" type="password" name="password">         
                         </div>
-
-                        <div class="inputDiv mt-4 text-center">
-                            <button class="btn capbtn" id="loginBtn" style="width:306px">join</button>
+                        <small *ngIf="password?.invalid && password?.touched && password?.errors?.['required']" class="text-danger">password is required.</small>     
+                        <div class="inputDiv mt-3 text-center">
+                            <button [disabled]="!loginForm.valid" class="btn capbtn" id="loginBtn" style="width:306px">join</button>
                             <div class="loader mt-2" id="loginBtnLoader"
                                 style="display:none;float:right;margin-right:10%;"></div>
                         </div>
-                        <div class="inputDiv mt-4 text-center">
-                            <button type="button" data-toggle="modal" data-target="#exampleModal" style="border:none;background-color:#101010;color:#3498DB">
-                                forgot your password ?
-                            </button>
-                        </div>
                     </form>
+                    <div class="inputDiv mt-4 text-center">
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" style="border:none;background-color:#101010;color:#3498DB">
+                            forgot your password ?
+                        </button>
+                    </div>
 
                 </div>
             </div>

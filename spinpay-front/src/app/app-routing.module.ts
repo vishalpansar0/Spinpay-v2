@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: '', component: MainbodyComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', redirectTo: 'register/userinfo'},
-  { path: 'register/userinfo', component: UserbasicinfoComponent}
+  { path: 'register/userinfo', component: UserbasicinfoComponent},
+  // { path: 'register/userdata', component: UserdataComponent}
 ];
 
 @NgModule({
