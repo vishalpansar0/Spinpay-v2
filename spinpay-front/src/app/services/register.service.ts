@@ -10,7 +10,11 @@ export class RegisterService {
   
   constructor(private _http:HttpClient) { }
 
-  userinfo(endpoint:any,userData:any){
+  sendOtp(endpoint:any,userData:any){
+    return this._http.post<any>(environment.backendUrl+endpoint,userData);
+  }
+
+  verifyOtpAndRegister(endpoint:any,userData:any){
     return this._http.post<any>(environment.backendUrl+endpoint,userData);
   }
 }

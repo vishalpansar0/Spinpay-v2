@@ -8,3 +8,6 @@
 .cborder{
     border: red;
 }
+.btn_disabled{
+    cursor: not-allowed! important;
+}

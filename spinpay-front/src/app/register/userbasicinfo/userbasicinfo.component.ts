@@ -13,6 +13,12 @@ export class UserbasicinfoComponent implements OnInit {
   isRoleTwo:boolean=false;
   errmsg:string ='';
   allValCheck = true;
+  otpDivShow = false;
+
+  first:number = 0;
+  second  :number = 0;
+  third:number = 0;
+  fourth:number = 0;
 
   constructor(private fb:FormBuilder, private _regService:RegisterService) { }
 
@@ -42,7 +48,15 @@ export class UserbasicinfoComponent implements OnInit {
     email: ['',[Validators.required, Validators.email]],
     password: ['',[Validators.required]],
     password_confirmation: ['',[Validators.required]],
-    phone: ['',[Validators.required]]
+    phone: ['',[Validators.required]],
+    userOtp: ['']
+  });
+
+  otpForm = this.fb.group({
+    first  :['',[Validators.required]],
+    second :['',[Validators.required]],
+    third  :['',[Validators.required]],
+    fourth :['',[Validators.required]]
   });
 
   ngOnInit(): void {
@@ -69,9 +83,9 @@ export class UserbasicinfoComponent implements OnInit {
         this.allValCheck = false;
      }else{
       this.allValCheck = true;
-      this._regService.userinfo('api/sendotp',this.registerUserInfoForm.value).subscribe(
+      this._regService.sendOtp('api/sendotp',this.registerUserInfoForm.value).subscribe(
         response => this.success(response),
-        error    => console.log('error', error)
+        error    => this.error()
       );
      }
   }
@@ -79,7 +93,7 @@ export class UserbasicinfoComponent implements OnInit {
   public success(response:any){
     console.log(response)
     if(response['status'] == 200){
-      this.errmsg = response['message'];
+      this.otpDivShow = true;
     }else if(response['status'] == 400 || response['status'] == 500){
       this.errmsg = response['message'];
       this.allValCheck = false;
@@ -103,4 +117,33 @@ export class UserbasicinfoComponent implements OnInit {
     }
   }
 
+  public error(){
+    this.errmsg = 'oops!, something went wrong, please try again later';
+    this.allValCheck = false;
+  }
+  
+
+  movetoNext(next:any){
+    next.focus();
+  }
+  
+  verifyOtpSubmit(){
+    if(!this.otpForm.valid){
+      this.errmsg = 'please enter otp correctly.';
+      this.allValCheck = false;
+    }else{
+      this.allValCheck = true;
+      let first:any = this.otpForm.get('first')?.value;
+      let second:any = this.otpForm.get('second')?.value;
+      let third:any = this.otpForm.get('third')?.value;
+      let fourth:any = this.otpForm.get('fourth')?.value;
+      let final:any = first+second+third+fourth;
+      this.registerUserInfoForm.patchValue({userOtp: final});
+      this._regService.sendOtp('api/verifyotp',this.registerUserInfoForm.value).subscribe(
+        response => console.log(response),
+        error    => console.log(error),
+      );
+    }
+  }
+  
 }
