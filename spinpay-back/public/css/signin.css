@@ -1,0 +1,106 @@
+body{
+    background-color: rgb(36, 39, 41);
+}
+
+
+/* Container - S */
+
+.container-s{
+    display: flex;
+    height: auto;
+    /* border: 2px solid gray; */
+}
+
+.left-align{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    /* border: 2px solid gray; */
+    flex-direction: column;
+}
+.logo{
+    /* flex: 1; */
+    margin-right: 300px;
+    margin-top: 70px;
+}
+.login-form{
+    flex: 1;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login-form label{
+    opacity: 0.8;
+    font-family: Gilroy-Bold;
+    font-size: 20px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.6px;
+    line-height: 26px;
+    white-space: pre-line;
+    margin-top: 30px;
+}
+.login-form small{
+    opacity: 0.4;
+    font-family: Gilroy-Medium;
+    font-size: 14px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.5px;
+    line-height: 22px;
+    white-space: pre-line;
+    margin-top: 8px;
+}
+
+.login-form input{
+    width: 100%;
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.8px;
+    line-height: 30px;
+    appearance: none;
+    border: 0px;
+    outline: 0px;
+    background: transparent;
+}
+
+.login-form input:hover{
+    width: 100%;
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.8px;
+    line-height: 30px;
+    appearance: none;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.login-form button{
+    border-radius: 50px 50px 50px 50px;
+    border:2px solid white;
+    background-color: #202325;
+    color: #796C60;
+   font-weight: 600;
+   padding: 20px;
+   /* box-shadow: -0.1px -0.1px 19px #796C60  ; */
+
+}
+.login-form button:hover{
+    background-color: #202325;
+    box-shadow: -1px -1px 19px #796C60  ;
+    border: none;
+}
+.right-align{
+    flex: 1;
+    /* height: 768px;
+    width: 400px; */
+    background-image: url("../images/borrower-lender-removebg.png");
+    background-size: 100%;
+    /* background-attachment: fixed; */
+    background-size: cover;
+    background-color: rgb(31, 34, 36);
+}
+
+
+

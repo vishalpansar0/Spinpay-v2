@@ -1,0 +1,465 @@
+:root {
+    --primary-color: #101010;
+    /* --primary-color: ; */
+}
+
+*,
+html,
+body {
+    padding: 0%;
+    margin: 0%;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url('/public/fonts/Gilroy\ Font/Gilroy-Bold.woff');
+    font-weight: bold;
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    font-family: myFirstFont;
+    /* background-color: red; */
+    padding: 30px 0px 30px 0px;
+}
+
+.logo-container {
+    font-family: myFirstFont;
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.menu-container {
+    font-family: myFirstFont;
+}
+
+.menu-container a {
+    color: white;
+    text-decoration: none;
+}
+
+.section-1 {
+    background-color: var(--primary-color);
+    /* height: 100%; */
+    overflow: hidden;
+}
+
+.section-2 {
+    background-color: #5EB09A;
+    /* height: 100%; */
+    overflow-x: hidden;
+}
+
+.div-1 {
+    background-color: var(--primary-color);
+    padding-top: 30px;
+    padding-bottom: 120px;
+}
+
+.main-head {
+    font-family: myFirstFont;
+    color: white;
+    font-size: 160px;
+    font-weight: 800;
+    line-height: 100%;
+}
+
+.join-btn {
+    font-family: myFirstFont;
+    border: 2px solid black;
+    background-color: white;
+    margin-top: 60px;
+    color: black;
+    min-width: 35%;
+    font-weight: bold;
+    padding: 12px;
+    font-size: 30px;
+    border-radius: 40px;
+}
+
+.main-head-2 {
+    font-family: myFirstFont;
+    font-size: 100px;
+    color: white;
+}
+
+.div-2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 0% 0% 0% 10%;
+}
+
+.section-1-content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.section-1-content-container-1 {
+    width: 50%;
+}
+
+.content-1 {
+    padding-top: 20px;
+    width: 50%;
+    color: white;
+    font-family: myFirstFont;
+    font-size: 60px;
+}
+
+.sub-head-1-color {
+    color: white;
+}
+
+.sub-head-2-color {
+    color: black;
+}
+
+.sub-head {
+    font-family: myFirstFont;
+    font-size: 60px;
+}
+
+.sub-content {
+    color: white;
+    font-family: myFirstFont;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+#hands-img {
+    margin-top: 10%;
+    margin-right: 20%;
+}
+
+.join-modal {
+    font-family: myFirstFont;
+    font-size: 36px;
+    color: white;
+    background-color: #101010;
+}
+
+.join-modal-body-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-modal-body {
+    flex: 50%;
+    padding: 5px;
+}
+
+.right-modal-body {
+    flex: 50%;
+    padding: 5px;
+}
+
+.modal-body-content {
+    border: 2px solid white;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* register page css starts */
+
+.register-container-body {
+    height: 100vh;
+    background-color: var(--primary-color);
+}
+
+.register-main-body {
+    height: 88%;
+    background-color: var(--primary-color);
+}
+
+.register-role-btn-left {
+    border-radius: 25px 0px 0px 25px;
+}
+
+.register-role-btn-right {
+    border-radius: 0px 25px 25px 0px;
+}
+
+.reg-role-btn {
+    width: 150px;
+    border: none;
+    padding: 10px;
+    font-family: myFirstFont;
+}
+
+.inputDiv input {
+    width: 100%;
+    padding: 12px;
+    padding-left: 28px;
+    padding-right: 28px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+
+.inputDiv1 input {
+    background-color: #101010;
+    color: white;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+    min-width: 100%;
+}
+
+.inputFileDiv {
+    border: 1px solid grey;
+    cursor: pointer;
+    padding: 12px;
+    height: 100px;
+    font-family: myFirstFont;
+    color: grey;
+    font-size: 24px;
+    overflow: hidden;
+    /* z-index: 10; */
+}
+
+.inputFileDiv:hover {
+    cursor: pointer;
+    border: 1px solid #3498DB;
+}
+
+.inputFileDiv:focus {
+    border: 1px solid #3498DB;
+}
+
+.filesInput {
+    height: 100px;
+    color: red;
+    background-color: #101010;
+    background: #101010;
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    overflow: hidden;
+    /* top: 10px; */
+    /* width: 100%; */
+    cursor: pointer;
+}
+
+.filesInput+label {
+    opacity: 1;
+}
+
+.inputDiv input:hover {
+    border: 1px solid #3498DB;
+    background-color: transparent;
+}
+
+.inputDiv input:focus {
+    border: 1px solid #3498DB;
+    background-color: transparent;
+}
+
+.inputDiv select {
+    width: 100%;
+    padding: 12px;
+    padding-left: 28px;
+    padding-right: 28px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+
+.inputDiv input:select {
+    border: 1px solid #3498DB;
+}
+
+.inputDiv select:focus {
+    border: 1px solid #3498DB;
+}
+
+.capbtn {
+    color: #FFFFFF;
+    min-width: 200px;
+    border-color: #3498DB;
+    border-style: solid;
+    border-width: 1px;
+    padding: 16px 16px;
+    background-color: #3498DB;
+    font-size: 15px;
+    box-shadow: none;
+    line-height: 13px;
+    letter-spacing: 1px;
+    /* text-transform: capitalize; */
+    border-radius: 1000px;
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498DB;
+    width: 6px;
+    height: 6px;
+    -webkit-animation: spin 2s linear infinite;
+    /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+
+/* Safari */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#aadharUploadBtn {
+    margin-top: 40px;
+}
+
+
+/* register page css ends */
+
+
+/* signin page css start */
+
+.login-main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.login-container {
+    /* border: 2px solid white; */
+    padding: 10px;
+}
+
+#login-heading {
+    font-family: myFirstFont;
+    color: white;
+}
+
+
+/* signin page css ends */
+
+
+/* footer css starts */
+
+.footer {
+    background-color: var(--primary-color);
+    /* height: 100px; */
+}
+
+.spinpay-intro {
+    color: white;
+    font-family: myFirstFont;
+    font-size: 20px
+}
+
+.sub-heads-footer {
+    /* color: rgb(148, 144, 144); */
+    color: aqua
+}
+
+.bottom-line {
+    color: white;
+}
+
+
+/* footer css ends */
+
+
+/* media queries */
+
+@media only screen and (max-width: 500px) {
+    body {
+        /* padding: 0px 20px 0px 20px; */
+    }
+    .navbar {
+        padding: 30px 20px 30px 20px;
+    }
+    .section-1 {
+        margin-top: 0px;
+    }
+    .main-head {
+        font-family: myFirstFont;
+        color: white;
+        font-size: 50px;
+        font-weight: 800;
+        line-height: 100%;
+    }
+    .join-btn {
+        font-family: myFirstFont;
+        border: 2px solid black;
+        background-color: white;
+        margin-top: 30px;
+        color: black;
+        min-width: 60%;
+        font-weight: bold;
+        padding: 5px;
+        font-size: 25px;
+        border-radius: 40px;
+    }
+    .content-1 {
+        width: 100%;
+    }
+    .content-1 img {
+        width: 50%;
+    }
+    .section-1-content-container-1 {
+        width: 100%;
+    }
+    .section-1-content-container-1 img {
+        display: none;
+    }
+    .reg-role-btn {
+        width: auto;
+        margin-top: 20px;
+    }
+    .capbtn {
+        margin-top: 20px;
+    }
+    .filesInput {
+        width: 100%;
+        right: 10px;
+        /* bottom: 10px; */
+    }
+    #aadharUploadBtn {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-width: 770px) {
+    .register-container-body {
+        height: 100%;
+        /* background-color: var(--primary-color); */
+    }
+}
