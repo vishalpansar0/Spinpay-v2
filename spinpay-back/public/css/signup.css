@@ -1,0 +1,112 @@
+body{
+    background-color: rgb(36, 39, 41);
+}
+
+
+.container-m{
+    display: flex;
+    height: auto;
+    align-items: center;
+    /* border: 2px solid gray; */
+}
+
+.left-align{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration-form{
+    flex: 2;
+    margin-top: 50px;
+}
+
+.registration-form label{
+    opacity: 0.8;
+    font-family: Gilroy-Bold;
+    font-size: 20px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.6px;
+    line-height: 26px;
+    white-space: pre-line;
+    margin-top: 30px;
+}
+.registration-form small{
+    opacity: 0.4;
+    font-family: Gilroy-Medium;
+    font-size: 14px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.5px;
+    line-height: 22px;
+    white-space: pre-line;
+    margin-top: 8px;
+}
+
+.registration-form input,.registration-form select {
+    width: 100%;
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.8px;
+    line-height: 30px;
+    appearance: none;
+    border: 0px;
+    outline: 0px;
+    background: transparent;
+}
+.form-group{
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-left: 60px;
+}
+
+.registration-form input:hover{
+    width: 100%;
+    font-family: Gilroy-Bold;
+    font-size: 30px;
+    color: rgb(248, 248, 248);
+    letter-spacing: 0.8px;
+    line-height: 30px;
+    appearance: none;
+    border: none;
+        outline: none;
+        background: transparent; 
+}
+.submit{
+    border-radius: 50px 50px 50px 50px;
+    border:2px solid white;
+    background-color: #202325;
+    color: #796C60;
+   font-weight: 600;
+   padding: 20px;
+   /* box-shadow: -0.1px -0.1px 19px #796C60  ; */
+
+}
+.submit:hover{
+    background-color: #202325;
+    box-shadow: -1px -1px 19px #796C60  ;
+    border: none;
+}
+.registration-form button{
+    border-radius: 50px 50px 50px 50px;
+    border:2px solid white;
+    background-color: #202325;
+    color: #796C60;
+   font-weight: 600;
+   padding: 20px;
+   /* box-shadow: -0.1px -0.1px 19px #796C60  ; */
+
+}
+.registration-form button:hover{
+    background-color: #202325;
+    box-shadow: -1px -1px 19px #796C60  ;
+    border: none;
+}
+
+.row{
+    margin: 30px;
+}
+.col{
+    margin: 10px;
+}

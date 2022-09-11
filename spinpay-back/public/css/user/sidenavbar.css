@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url('/public/fonts/Gilroy\ Font/Gilroy-Bold.woff');
+    font-weight: bold;
+}
+
+.left-container {
+    background-color: #3e423f;
+    position: fixed;
+    height: 100%;
+    width: 164px;
+    color: white;
+    transition: all ease .4s;
+}
+
+.left-container .ul .navbarBtn {
+    background-color: rgb(37, 37, 37);
+    color: white;
+}
+
+.left-container .ul button {
+    width: 164px;
+    background-color: #3e423f;
+    display: block;
+    text-decoration: none;
+    font-family: myFirstFont;
+    line-height: 40px;
+    color: wheat;
+    border: none;
+    box-sizing: border-box;
+    transition: all .4s ease;
+}
+
+.left-container .ul button:hover {
+    background-color: rgb(37, 37, 37);
+    color: white;
+    font-family: myFirstFont;
+}
+
+.toggleContainerCSS {
+    margin-left: 164px;
+}
+
+.text_align{
+    text-align: left;
+    padding-left: 5px;
+}
+
+/* @media only screen and (max-width: 600px) {
+   
+    .left-container {
+         display: none;
+      
+    }
+    .right-container{
+        margin-left: 0px;
+    }
+} */
+
+

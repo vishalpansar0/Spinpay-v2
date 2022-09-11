@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
   selector: 'app-userbasicinfo',
@@ -13,35 +14,35 @@ export class UserbasicinfoComponent implements OnInit {
   errmsg:string ='';
   allValCheck = true;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder, private _regService:RegisterService) { }
 
   get name(){
     return this.registerUserInfoForm.get('name');
   }
 
-  get useremail(){
-    return this.registerUserInfoForm.get('useremail');
+  get email(){
+    return this.registerUserInfoForm.get('email');
   }
 
-  get userpassword(){
-    return this.registerUserInfoForm.get('userpassword');
+  get password(){
+    return this.registerUserInfoForm.get('password');
   }
 
-  get userpasswordcnf(){
-    return this.registerUserInfoForm.get('userpasswordcnf');
+  get password_confirmation(){
+    return this.registerUserInfoForm.get('password_confirmation');
   }
 
-  get userphone(){
-    return this.registerUserInfoForm.get('userphone');
+  get phone(){
+    return this.registerUserInfoForm.get('phone');
   }
 
   registerUserInfoForm = this.fb.group({
-    role : [''],
+    role_id : [''],
     name : ['',[Validators.required]],
-    useremail: ['',[Validators.required, Validators.email]],
-    userpassword: ['',[Validators.required]],
-    userpasswordcnf: ['',[Validators.required]],
-    userphone: ['',[Validators.required]]
+    email: ['',[Validators.required, Validators.email]],
+    password: ['',[Validators.required]],
+    password_confirmation: ['',[Validators.required]],
+    phone: ['',[Validators.required]]
   });
 
   ngOnInit(): void {
@@ -52,23 +53,54 @@ export class UserbasicinfoComponent implements OnInit {
      if(val==3){
        this.isRoleTwo = false;
        this.isRoleOne = true;
-       this.registerUserInfoForm.patchValue({role: '3'});
+       this.registerUserInfoForm.patchValue({role_id: '3'});
      }
      else if(val==4){
        this.isRoleTwo = true;
        this.isRoleOne = false;
-       this.registerUserInfoForm.patchValue({role: '4'});
+       this.registerUserInfoForm.patchValue({role_id: '4'});
      }
   }
 
   public onSubmit(){
-     console.log(this.registerUserInfoForm.get('name')?.value);
-     if(this.registerUserInfoForm.get('role')?.value ==='' || this.registerUserInfoForm.get('name')?.value || this.registerUserInfoForm.get('useremail')?.value == '' || this.registerUserInfoForm.get('userpassword')?.value == '' || this.registerUserInfoForm.get('userpasswordcnf')?.value == '' || this.registerUserInfoForm.get('userphone')?.value == ''){
+    //  console.log(this.registerUserInfoForm.get('name')?.value);
+     if(!this.registerUserInfoForm.valid){
         this.errmsg = 'please fill all fields correctly.';
         this.allValCheck = false;
      }else{
       this.allValCheck = true;
+      this._regService.userinfo('api/sendotp',this.registerUserInfoForm.value).subscribe(
+        response => this.success(response),
+        error    => console.log('error', error)
+      );
      }
+  }
+
+  public success(response:any){
+    console.log(response)
+    if(response['status'] == 200){
+      this.errmsg = response['message'];
+    }else if(response['status'] == 400 || response['status'] == 500){
+      this.errmsg = response['message'];
+      this.allValCheck = false;
+    }else if(response['status'] == 406){
+      this.allValCheck = false;
+      if(response['message']['phone']!=""){
+        this.errmsg = response['message']['phone'];
+      }
+      if(response['message']['name']!=""){
+          this.errmsg = response['message']['name'];
+      }
+      if(response['message']['email']!=""){
+          this.errmsg = response['message']['email'];
+      }
+      if(response['message']['password']!=""){
+          this.errmsg = response['message']['password'];
+      }
+      if(response['message']['password_confirmation']!=""){
+          this.errmsg = response['message']['password_confirmation'];
+      }
+    }
   }
 
 }

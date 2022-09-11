@@ -23,38 +23,38 @@
                     </div>
                     <div class="col-md-6">
                         <div class="inputDiv">
-                            <input type="text" id="usermail" formControlName="useremail" placeholder="enter email" required>
-                            <small *ngIf="useremail?.invalid && useremail?.touched && useremail?.errors?.['required']" class="text-danger">email is required.</small>
-                            <small *ngIf="useremail?.invalid && useremail?.touched && useremail?.errors?.['email']" class="text-danger">should be an email.</small>
+                            <input type="text" id="usermail" formControlName="email" placeholder="enter email" required>
+                            <small *ngIf="email?.invalid && email?.touched && email?.errors?.['required']" class="text-danger">email is required.</small>
+                            <small *ngIf="email?.invalid && email?.touched && email?.errors?.['email']" class="text-danger">should be an email.</small>
                         </div>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="inputDiv">
-                            <input type="password" id="userpassword" formControlName="userpassword" placeholder="create a new password" required>
-                            <small class="form-text text-muted">password should contain at least 8 characters.</small>
-                            <small *ngIf="userpassword?.invalid && userpassword?.touched && userpassword?.errors?.['required']" class="text-danger">password is required.</small>
+                            <input type="password" id="userpassword" formControlName="password" placeholder="create a new password" required>
+                            <small class="form-text text-muted">password should contain at least 8 characters.</small>&nbsp;&nbsp;
+                            <small *ngIf="password?.invalid && password?.touched && password?.errors?.['required']" class="text-danger">password is required.</small>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="inputDiv">
-                            <input type="password" id="userpasswordcnf" formControlName="userpasswordcnf" placeholder="confirm your password" required>
-                            <small *ngIf="userpasswordcnf?.invalid && userpasswordcnf?.touched && userpasswordcnf?.errors?.['required']" class="text-danger">confirm password is required.</small>
+                            <input type="password" id="userpasswordcnf" formControlName="password_confirmation" placeholder="confirm your password" required>
+                            <small *ngIf="password_confirmation?.invalid && password_confirmation?.touched && password_confirmation?.errors?.['required']" class="text-danger">confirm password is required.</small>
                         </div>
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="col-md-6">
                         <div class="inputDiv">
-                            <input type="tel" id="userphone" formControlName="userphone" placeholder="enter mobile number" required>
-                            <small *ngIf="userphone?.invalid && userphone?.touched && userphone?.errors?.['required']" class="text-danger">phone number is required.</small>
+                            <input type="tel" id="userphone" formControlName="phone" placeholder="enter mobile number" required>
+                            <small *ngIf="phone?.invalid && phone?.touched && phone?.errors?.['required']" class="text-danger">phone number is required.</small>
                         </div>
 
                     </div>
                     <div class="col-md-6">
                         <div class="inputDiv">
-                            <button class="btn capbtn" id="joinSpinpayBtn" style="float:right">join</button>
+                            <button [disabled]="!registerUserInfoForm.valid" class="btn capbtn" id="joinSpinpayBtn" style="float:right">join</button>
                             <div class="loader mt-2" id="joinBtnLoader"
                                 style="display:none;float:right;margin-right:10%;"></div>
                                 <p style="color:white">By joining, you are aggree to our <a target="blank" href="">terms & conditions</a> </p>
