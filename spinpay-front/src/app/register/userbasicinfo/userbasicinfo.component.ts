@@ -145,5 +145,4 @@ export class UserbasicinfoComponent implements OnInit {
       );
     }
   }
-  
 }

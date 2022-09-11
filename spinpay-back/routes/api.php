@@ -11,6 +11,7 @@ use App\Http\Controllers\RaiseIssue;
 use App\Http\Controllers\Lender;
 use App\Http\Controllers\AgentDashboardController;
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,12 +24,26 @@ use App\Http\Controllers\Admin;
 |
 */
 
+// Route::group([
+
+//     'middleware' => 'api',
+//     'prefix' => 'auth'
+
+// ], function ($router) {
+
+//     Route::post('login', 'AuthController@login');
+//     Route::post('logout', 'AuthController@logout');
+//     Route::post('refresh', 'AuthController@refresh');
+//     Route::post('me', 'AuthController@me');
+
+// });
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 //auth routes
-Route::post('login',[UserAuthController::class,'login'])->middleware('authCheck');
+Route::post('login',[AuthController::class,'login'])->middleware('api');
 Route::get('logout',[UserAuthController::class,'logout']);
 
 //agent auth routes

@@ -13,6 +13,8 @@ import { UserbasicinfoComponent } from './register/userbasicinfo/userbasicinfo.c
 import { UserdocsComponent } from './register/userdocs/userdocs.component';
 import { LenderComponent } from './user/lender/lender.component';
 import { BorrowerComponent } from './user/borrower/borrower.component';
+import { AuthGuard } from './gaurds/auth.guard';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,6 @@ import { BorrowerComponent } from './user/borrower/borrower.component';
     FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, AuthGuard, AuthService]
 })
 export class AppModule { }
