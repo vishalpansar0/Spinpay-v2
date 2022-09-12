@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mainbody',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainbodyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _auth:AuthService, private _route:Router) { }
 
   ngOnInit(): void {
+    this._auth.checkAuth().subscribe(
+      (success)=>this._route.navigate(['register/userinfo']),
+      (err)=>''
+     )
   }
 
 }

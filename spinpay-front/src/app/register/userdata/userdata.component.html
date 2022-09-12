@@ -1,0 +1,88 @@
+<div class="register-container-body">
+    <app-navbar></app-navbar>
+    <div class="register-main-body">
+        <form [formGroup]="userDataForm">
+            <div class="error-message" id="errorDiv" style="padding:0%;display:none"></div>
+            <div class="container reg-div-1">
+                <div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="inputDiv">
+                                <input formControlName="address_line" type="text" name="address_line" id="address" placeholder="enter full address"
+                                    required>
+                                <small class="form-text text-muted">address should be as per in aadhar card.</small>
+                                <span class="error-message" id="errorAddress" style="padding:0%;display:none"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="city" type="text" name="city" id="city" placeholder="city" required>
+                                <span class="error-message" id="errorCity" style="padding:0%;display:none">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="state" type="text" name="state" id="state" placeholder="state" required>
+                                <span class="error-message" id="errorState" style="padding:0%;display:none">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="pincode" type="number" name="pincode" id="pincode" placeholder="pincode" required>
+                                <span class="error-message" id="errorPincode" style="padding:0%;display:none"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input type="number" name="age" id="age" placeholder="age" required>
+                                <span class="error-message" id="errorAge" style="padding:0%;display:none">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <select formControlName="gender" name="gender" id="gender" placeholder="Gender" required>
+                                    <option value="Gender">Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <span class="error-message" id="errorGender" style="padding:0%;display:none"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="dob" type="date" name="dob" id="dob" placeholder="DOB" required>
+                                <span class="error-message" id="errorDob" style="padding:0%;display:none">
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="inputDiv">
+                                <input type="file" formControlName="image" id="image" name="image" placeholder="image" required>
+                                <small class="form-text text-muted">upload image</small>
+                                <span class="error-message" id="errorImage" style="padding:0%;display:none">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="">
+                        <button class="submit" id="submitUserData">Proceed</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>

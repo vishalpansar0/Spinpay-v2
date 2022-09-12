@@ -44,6 +44,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //auth routes
 Route::post('login',[AuthController::class,'login'])->middleware('api');
+Route::post('me', [AuthController::class,'me']);
 Route::get('logout',[UserAuthController::class,'logout']);
 
 //agent auth routes
