@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,12 @@ import { LenderComponent } from './user/lender/lender.component';
 import { BorrowerComponent } from './user/borrower/borrower.component';
 import { AuthGuard } from './gaurds/auth.guard';
 import { AuthService } from './services/auth.service';
+import { IntercepterService } from './services/intercepter.service';
+import { UserdataComponent } from './register/userdata/userdata.component';
+import { AadharComponent } from './register/userdocs/aadhar/aadhar.component';
+import { PanComponent } from './register/userdocs/pan/pan.component';
+import { BankstatementComponent } from './register/userdocs/bankstatement/bankstatement.component';
+import { PayslipComponent } from './register/userdocs/payslip/payslip.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,12 @@ import { AuthService } from './services/auth.service';
     UserbasicinfoComponent,
     UserdocsComponent,
     LenderComponent,
-    BorrowerComponent
+    BorrowerComponent,
+    UserdataComponent,
+    AadharComponent,
+    PanComponent,
+    BankstatementComponent,
+    PayslipComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +46,11 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent, AuthGuard, AuthService]
+  providers: [AuthGuard, AuthService,{
+    provide:HTTP_INTERCEPTORS,
+    useClass:IntercepterService,
+    multi:true
+  }],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

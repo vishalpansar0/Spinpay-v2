@@ -17,4 +17,20 @@ export class RegisterService {
   verifyOtpAndRegister(endpoint:any,userData:any){
     return this._http.post<any>(environment.backendUrl+endpoint,userData);
   }
+
+  imageUpload(endpoint:any,formData:any){
+    return this._http.post<any>(environment.backendUrl+endpoint,formData);
+  }
+
+  submitUserData(endpoint:any,userData:any){
+    return this._http.post(environment.backendUrl+endpoint,userData);
+  }
+
+  getDocDetails(endpoint:any,formData:any){
+    return this._http.post<any>(environment.backendUrl+endpoint,formData);
+  }
+
+  docUpload(endpoint:any,docData:any){
+    return this._http.post<any>(environment.backendUrl+endpoint,docData);
+  }
 }

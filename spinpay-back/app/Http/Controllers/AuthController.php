@@ -38,9 +38,20 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me()
+    public function CheckAuth()
     {
-        return response()->json(auth()->user());
+        $user = auth()->user();
+        $id = $user->id;
+        $name = $user->name;
+        $email = $user->email;
+        $role_id = $user->role_id;
+        return response()->json([
+            "id"      => $id,
+            "name"    => $name,
+            "email"   => $email,
+            "role_id" => $role_id,
+            "login"   => true
+        ]);
     }
 
     /**

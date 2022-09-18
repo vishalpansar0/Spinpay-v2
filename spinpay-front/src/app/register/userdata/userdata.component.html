@@ -1,0 +1,81 @@
+<div class="register-container-body">
+    <app-navbar></app-navbar>
+    <div class="register-main-body">
+        {{ userDataForm.value | json }}
+        <form [formGroup]="userDataForm" (ngSubmit)="submitUserData()">
+            <div class="error-message" id="errorDiv" *ngIf="errFlag" style="padding:0%;">{{errmsg}}</div>
+            <div class="container reg-div-1">
+                <div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="inputDiv">
+                                <input formControlName="address_line" type="text" name="address_line" id="address" placeholder="enter full address"
+                                    required>
+                                <small class="form-text text-muted">address should be as per in aadhar card.</small>&nbsp;&nbsp;
+                                <small *ngIf="address_line?.invalid && address_line?.touched && address_line?.errors?.['required']" class="text-danger">address_line is required.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="city" type="text" name="city" id="city" placeholder="city" required>
+                                <small *ngIf="city?.invalid && city?.touched && city?.errors?.['required']" class="text-danger">city is required.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="state" type="text" name="state" id="state" placeholder="state" required>
+                                <small *ngIf="state?.invalid && state?.touched && state?.errors?.['required']" class="text-danger">state is required.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="pincode" type="number" name="pincode" id="pincode" placeholder="pincode" required>
+                                <small *ngIf="pincode?.invalid && pincode?.touched && pincode?.errors?.['required']" class="text-danger">pincode is required.</small>                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="age" type="number" name="age" id="age" placeholder="age" required>
+                                <small *ngIf="age?.invalid && age?.touched && age?.errors?.['required']" class="text-danger">age is required.</small>  
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <select formControlName="gender" name="gender" id="gender" placeholder="Gender" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <small *ngIf="gender?.invalid && gender?.touched && gender?.errors?.['required']" class="text-danger">gender is required.</small>      
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="inputDiv">
+                                <input formControlName="dob" type="date" name="dob" id="dob" placeholder="DOB" required>
+                                <small *ngIf="dob?.invalid && dob?.touched && dob?.errors?.['required']" class="text-danger">dob is required.</small>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="inputDiv">
+                                <input type="file" formControlName="image" id="image" name="image" placeholder="image" (change)="onFileChange($event)">
+                                <small class="form-text text-muted">upload image</small>&nbsp;&nbsp;
+                                <small *ngIf="image?.invalid && image?.touched && image?.errors?.['required']" class="text-danger">image is required.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=""><br>
+                        <button [disabled]="!userDataForm.valid" class="submit" type="submit" class="btn capbtn" id="submitOtpBtn">Proceed</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { RegisterService } from 'src/app/services/register.service';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-userbasicinfo',
@@ -20,7 +22,7 @@ export class UserbasicinfoComponent implements OnInit {
   third:number = 0;
   fourth:number = 0;
 
-  constructor(private fb:FormBuilder, private _regService:RegisterService) { }
+  constructor(private fb:FormBuilder,private _auth:AuthService, private _regService:RegisterService, private _route:Router, private _actRoute:ActivatedRoute) { }
 
   get name(){
     return this.registerUserInfoForm.get('name');
@@ -60,6 +62,10 @@ export class UserbasicinfoComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this._auth.checkAuth().subscribe(
+      (success)=>this._route.navigate(['register/userinfo']),
+      (err)=>''
+     );
   }
 
   public selectrole($e:Event,val:number):void {
@@ -140,8 +146,19 @@ export class UserbasicinfoComponent implements OnInit {
       let final:any = first+second+third+fourth;
       this.registerUserInfoForm.patchValue({userOtp: final});
       this._regService.sendOtp('api/verifyotp',this.registerUserInfoForm.value).subscribe(
-        response => console.log(response),
-        error    => console.log(error),
+        response => {
+          if(response.status==200){
+            console.log(response.id)
+            this._route.navigate(['register/userdata/',response.id])
+          }else{
+            this.errmsg = 'something went wrong please try later.';
+            this.allValCheck = false;
+          }
+        },
+        error    => {
+          this.errmsg = 'something went wrong please try later.';
+            this.allValCheck = false;
+        },
       );
     }
   }

@@ -54,6 +54,7 @@ class UserController extends Controller
 
     public function userdata(Request $request)
     {
+        print_r($request->all());
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
             'address_line' => 'required',
@@ -62,7 +63,54 @@ class UserController extends Controller
             'pincode' => 'required',
             'age' => 'required',
             'gender' => 'required',
-            'dob' => 'required',
+            'dob' => 'required'
+        ]);
+        if ($validator->fails()) {
+            $flag = false;
+            return response()->json([
+                'Validation Failed' => $validator->errors(),
+                'status' => 400,
+            ]);
+        } else {
+            try {
+                $user = new UserData();
+                $user->user_id = $request['user_id'];
+                $user->address_line = $request['address_line'];
+                $user->city = $request['city'];
+                $user->state = $request['state'];
+                $user->pincode = $request['pincode'];
+                $user->age = $request['age'];
+                $user->gender = $request['gender'];
+                $user->dob = $request['dob'];
+                $user->image = '';
+                // $path = $request->file('image')->store('public/images/profileImage');
+                // $path = str_replace("public/", "", $path);
+                // $user->image = $path;
+                $isSaved = $user->save();
+                if ($isSaved == 1) {
+                    return response()->json([
+                        'message' => 'success',
+                        'status' => 200,
+                        'id' => $user->user_id,
+                    ]);
+                } else {
+                    return response()->json([
+                        'message' => 'Data not Saved',
+                        'status' => 400,
+                    ]);
+                }
+            } catch (QueryException $e) {
+                return response()->json([
+                    'message' => 'Server Error Please try later'.$e,
+                    'status' => 400,
+                ]);
+            }
+        }
+    }
+
+    public function getDocDetailsimageUpload(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'image' => 'required',
         ]);
         if ($validator->fails()) {
@@ -80,24 +128,16 @@ class UserController extends Controller
                 ]);
             }
             try {
-                $user = new UserData();
-                $user->user_id = $request['user_id'];
-                $user->address_line = $request['address_line'];
-                $user->city = $request['city'];
-                $user->state = $request['state'];
-                $user->pincode = $request['pincode'];
-                $user->age = $request['age'];
-                $user->gender = $request['gender'];
-                $user->dob = $request['dob'];
                 $path = $request->file('image')->store('public/images/profileImage');
                 $path = str_replace("public/", "", $path);
-                $user->image = $path;
-                $isSaved = $user->save();
-                if ($isSaved == 1) {
+                $image = $path;
+                
+                $user = UserData::where('user_id', $request['user_id'])->limit(1)->update(['image' => $image]);
+                if ($user) {
                     return response()->json([
                         'message' => 'success',
                         'status' => 200,
-                        'id' => $user->user_id,
+                        'path'=>$path
                     ]);
                 } else {
                     return response()->json([
@@ -107,8 +147,38 @@ class UserController extends Controller
                 }
             } catch (QueryException $e) {
                 return response()->json([
-                    'message' => 'Server Error Please try later',
+                    'message' => 'Server Error Please try later'.$e,
                     'status' => 400,
+                ]);
+            }
+        }
+    }
+
+    public function getDocDetails(Request $req){
+        $validate = Validator::make($req->all(), [
+            'user_id' => 'required',
+            'doc_id'=>'required'
+        ]);
+
+        if ($validate->fails()) {
+            $flag = false;
+            return response()->json([
+                'Validation Failed' => $validate->errors(),
+                "status" => 400,
+            ]);
+        } else {
+            $user_doc = new UserDocument();
+            if ($user_doc->where('user_id', $req['user_id'])->where('master_document_id',$req['doc_id'])->where('is_verified','!=','reject')->get()->first()) {
+                return response()->json([
+                    'message' => "exists",
+                    'flag' =>true,
+                    'status' => 200,
+                ]);
+            }else{
+                return response()->json([
+                    'message' => "not exists",
+                    'flag' =>false,
+                    'status' => 200,
                 ]);
             }
         }
@@ -200,7 +270,7 @@ class UserController extends Controller
                 $path = $request->file('document_image')->store('public/images/documentImage');
                 $path = str_replace("public/", "", $path);
                 $ifSaved = DB::table('user_documents')->updateOrInsert(
-                    ['user_id' => $request['user_id'], 'master_document_id' => $request['master_document_id'], 'document_number'=>$request['document_number']],
+                    ['user_id' => $request['user_id'], 'master_document_id' => $request['master_document_id'], 'document_number'=>123],
                     [ 'document_image' => $path, 'is_verified' => 'pending ']
                 );
                 if ($ifSaved == 1) {
@@ -228,7 +298,6 @@ class UserController extends Controller
         $validate = Validator::make($request->all(), [
             'user_id' => 'required',
             'master_document_id' => 'required',
-            'document_number' => 'required',
             'document_image' => 'required',
         ]);
         if ($validate->fails()) {
@@ -241,7 +310,7 @@ class UserController extends Controller
                 $path = $request->file('document_image')->store('public/images/documentImage');
                 $path = str_replace("public/", "", $path);
                 $ifSaved = DB::table('user_documents')->updateOrInsert(
-                    ['user_id' => $request['user_id'], 'master_document_id' => $request['master_document_id'], 'document_number'=>$request['document_number']],
+                    ['user_id' => $request['user_id'], 'master_document_id' => $request['master_document_id'], 'document_number'=>123],
                     [ 'document_image' => $path , 'is_verified' => 'pending ']
                 );
                 if ($ifSaved == 1) {
