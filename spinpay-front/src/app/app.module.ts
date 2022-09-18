@@ -17,6 +17,10 @@ import { AuthGuard } from './gaurds/auth.guard';
 import { AuthService } from './services/auth.service';
 import { IntercepterService } from './services/intercepter.service';
 import { UserdataComponent } from './register/userdata/userdata.component';
+import { AadharComponent } from './register/userdocs/aadhar/aadhar.component';
+import { PanComponent } from './register/userdocs/pan/pan.component';
+import { BankstatementComponent } from './register/userdocs/bankstatement/bankstatement.component';
+import { PayslipComponent } from './register/userdocs/payslip/payslip.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { UserdataComponent } from './register/userdata/userdata.component';
     UserdocsComponent,
     LenderComponent,
     BorrowerComponent,
-    UserdataComponent
+    UserdataComponent,
+    AadharComponent,
+    PanComponent,
+    BankstatementComponent,
+    PayslipComponent
   ],
   imports: [
     BrowserModule,

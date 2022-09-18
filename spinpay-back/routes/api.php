@@ -44,7 +44,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //auth routes
 Route::post('login',[AuthController::class,'login'])->middleware('api');
-Route::post('me', [AuthController::class,'me']);
+
+Route::post('checkAuth', [AuthController::class,'CheckAuth']);
+
+Route::post('/imageUpload', [UserController::class, 'imageUpload']);
+
+Route::post('getDocDetails',[UserController::class, 'getDocDetails']);
+
+Route::post('/userdata', [UserController::class, 'userdata'])->middleware('api');
+
+Route::post('/aadhar', [UserController::class, 'aadhar']);
+
+Route::post('pancard',[UserController::class, 'pancard']);
+
+Route::post('bankstatement',[UserController::class,'bankstatement']);
+
+Route::post('payslip',[UserController::class,'payslip']);
+
+
+
 Route::get('logout',[UserAuthController::class,'logout']);
 
 //agent auth routes
@@ -69,17 +87,15 @@ Route::post('verifyotpforgotpassword',[Mailes::class,"verifyforgotpasswordotp"])
 
 //for to store basic user details
 Route::post("store_users",[UserController::class,"store_users"]);
-Route::post('/userdata', [UserController::class, 'userdata'])->middleware('isLoggedIn');
-Route::post('/aadhar', [UserController::class, 'aadhar'])->middleware('isLoggedIn');
+
 
 //for to store pancard push
-Route::post('pancard',[UserController::class, 'pancard'])->middleware('isLoggedIn');
 
 // to store payslip details
-Route::post('payslip',[UserController::class,'payslip'])->middleware('isLoggedIn');
+
 
 // to store bankstate details
-Route::post('bankstatement',[UserController::class,'bankstatement'])->middleware('isLoggedIn');
+
 
 
 // Change Password

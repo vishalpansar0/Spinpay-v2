@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 import { RegisterService } from 'src/app/services/register.service';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-userbasicinfo',
@@ -21,7 +22,7 @@ export class UserbasicinfoComponent implements OnInit {
   third:number = 0;
   fourth:number = 0;
 
-  constructor(private fb:FormBuilder, private _regService:RegisterService, private _route:Router) { }
+  constructor(private fb:FormBuilder,private _auth:AuthService, private _regService:RegisterService, private _route:Router, private _actRoute:ActivatedRoute) { }
 
   get name(){
     return this.registerUserInfoForm.get('name');
@@ -61,6 +62,10 @@ export class UserbasicinfoComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this._auth.checkAuth().subscribe(
+      (success)=>this._route.navigate(['register/userinfo']),
+      (err)=>''
+     );
   }
 
   public selectrole($e:Event,val:number):void {

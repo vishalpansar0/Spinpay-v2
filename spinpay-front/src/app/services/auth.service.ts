@@ -18,6 +18,6 @@ export class AuthService {
   }
 
   checkAuth(){
-    return this._http.post(environment.backendUrl+'api/me','')
+    return this._http.post<any>(environment.backendUrl+'api/checkAuth','')
   }
 }

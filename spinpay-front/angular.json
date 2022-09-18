@@ -30,8 +30,7 @@
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
               "src/assets/js/app.js",
-              "src/assets/js/jquery.js",
-              "src/assets/js/wow.min.js"
+              "src/assets/js/jquery.js"
             ]
           },
           "configurations": {
