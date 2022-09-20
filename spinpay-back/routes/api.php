@@ -61,6 +61,8 @@ Route::post('bankstatement',[UserController::class,'bankstatement']);
 
 Route::post('payslip',[UserController::class,'payslip']);
 
+Route::post('/user/borrower',[Borrower::class,'borrowerdashboard']);
+
 
 
 Route::get('logout',[UserAuthController::class,'logout']);
