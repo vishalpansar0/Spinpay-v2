@@ -9,6 +9,10 @@ import { AadharComponent } from './register/userdocs/aadhar/aadhar.component';
 import { BankstatementComponent } from './register/userdocs/bankstatement/bankstatement.component';
 import { PanComponent } from './register/userdocs/pan/pan.component';
 import { UserdocsComponent } from './register/userdocs/userdocs.component';
+import { BorrowerComponent } from './user/borrower/borrower.component';
+import { BorrowwerDashboardComponent } from './user/borrower/borrowwer-dashboard/borrowwer-dashboard.component';
+import { LenderComponent } from './user/lender/lender.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
   { path: '', component: MainbodyComponent},
@@ -34,7 +38,28 @@ const routes: Routes = [
       }
     ],
   },
-  { path:'user', component:UserdataComponent}
+  { path:'user', component:UserComponent,
+    children: [
+      {
+        path: 'borrower', 
+        component: BorrowerComponent, 
+        children: [
+          {
+            path: 'dashboard', 
+            component: BorrowwerDashboardComponent, 
+          },
+          {
+            path: 'requests',
+            component: BorrowwerDashboardComponent
+          }
+        ],
+      },
+      {
+        path: 'lender',
+        component: LenderComponent,     
+      },
+    ],
+  }
 ];
 
 @NgModule({

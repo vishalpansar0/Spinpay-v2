@@ -21,17 +21,21 @@ use Illuminate\Support\Facades\Mail;
 
 class Borrower extends Controller
 {
-    public function borrowerdashboard()
+    public function borrowerdashboard(Request $req)
     {
-        $user_id = Session::get('user_id');
+        $user_id = 63;
+        // print_r($user_id);
         try {
             $data = Users::where('users.id', $user_id)->leftjoin('user_datas', 'user_datas.user_id', '=', 'users.id')->leftjoin('credit_details as credit', 'credit.user_id', '=', 'users.id')->leftjoin('loans', 'loans.borrower_id', '=', 'users.id')->select('users.name as name', 'user_datas.reason', 'user_datas.status as statuss', 'credit.credit_limit as limit', 'credit.credit_score as score', 'loans.id as loan_id', 'loans.amount','loans.processing_fee as loanp', 'loans.start_date', 'loans.end_date', 'loans.status')
             ->latest('loans.updated_at','desc')->first();
-            // return $data;
-            return view('user.borrower.dashboard', ['datas' => $data]);
+            return response()->json([
+                'data'=>$data,
+                'status'=>200
+            ]);
         } catch (QueryException $e) {
             return response()->json([
-                'message' => 'We are facing some issue, We are working on this'
+                'message' => 'We are facing some issue, We are working on this',
+                'status'=>400
             ]);
         }
     }

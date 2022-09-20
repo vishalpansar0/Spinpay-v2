@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url('/public/fonts/Gilroy\ Font/Gilroy-Bold.woff');
+    font-weight: bold;
+}
+
+#main-container {
+    margin-top: 50px;
+}
+
+body {
+    background-color: rgb(37, 37, 37);
+    /* background-color: #17202A; */
+}
+
+#credits {
+    /* background-color: blue; */
+    height: 180px;
+    display: flex;
+}
+
+#summary-div{
+    color:white;
+    padding-left: 150px;
+}
+
+#creditScore {
+    margin-left: auto;
+    margin-top: 35px;
+    margin-right: 20px;
+    background-color: #17202A;
+    height: 110px;
+    width: 180px;
+}
+
+#CreditPoint {
+    margin-right: 100px;
+    margin-top: 35px;
+    height: 110px;
+    width: 180px;
+    background-color: #17202A;
+}
+
+#applyBtn-div {
+    background-color: #17202A;
+    height: 85px;
+    padding: 20px;
+    display: flex;
+    color: white;
+    font-family: myFirstFont;
+    border-radius: 10px;
+}
+
+#applyBtn {
+    /* margin-left: 600px; */
+    border-radius: 10px;
+    margin-left: auto;
+    
+}
+
+#btn {
+    /* background-color: green; */
+    background-color:rgb(67, 181, 216);
+    padding: 10px;
+    width: 250px;
+    border-radius: 1000px;
+    border: none;
+    font-family: myFirstFont;
+}
+
+
+#heading {
+    color: blue;
+    padding: 20px;
+    margin-top: 40px;
+    font-family: myFirstFont;
+}
+
+.inputDiv input {
+    width: 100%;
+    padding: 12px;
+    padding-left: 28px;
+    padding-right: 28px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+.inputDiv input:hover {
+    border: 1px solid #3498DB;
+}
+
+.inputDiv input:focus {
+    border: 1px solid #3498DB;
+}
+
+
+/* Select */
+.inputDiv select {
+    width: 100%;
+    padding: 12px;
+    padding-left: 28px;
+    padding-right: 28px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+.inputDiv select:hover {
+    border: 1px solid #3498DB;
+}
+
+.inputDiv select:focus {
+    border: 1px solid #3498DB;
+}
+
+/* Modal */
+.modals{
+    /* width: 1700px; */
+    position: absolute;
+    width: 600px;
+    height:300px;
+    background-color: antiquewhite;
+    left:450px;
+    top:127px;
+}
+
+
+.inputDiv input {
+    width: 100%;
+    padding: 12px;
+    padding-left: 28px;
+    padding-right: 28px;
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+
+.inputFileDiv {
+    border: 1px solid grey;
+    cursor: pointer;
+    padding: 12px;
+    /* height: 100px; */
+    font-family: myFirstFont;
+    color: grey;
+    font-size: 24px;
+    overflow: hidden;
+    /* z-index: 10; */
+}
+
+.inputFileDiv:hover {
+    cursor: pointer;
+    border: 1px solid #3498DB;
+}
+
+.inputFileDiv:focus {
+    border: 1px solid #3498DB;
+}

@@ -21,6 +21,11 @@ import { AadharComponent } from './register/userdocs/aadhar/aadhar.component';
 import { PanComponent } from './register/userdocs/pan/pan.component';
 import { BankstatementComponent } from './register/userdocs/bankstatement/bankstatement.component';
 import { PayslipComponent } from './register/userdocs/payslip/payslip.component';
+import { UserComponent } from './user/user.component';
+import { SidebarComponent } from './user/sidebar/sidebar.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { BorrowwerDashboardComponent } from './user/borrower/borrowwer-dashboard/borrowwer-dashboard.component';
+import { BorrowwerSidebarComponent } from './user/borrower/borrowwer-sidebar/borrowwer-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,12 @@ import { PayslipComponent } from './register/userdocs/payslip/payslip.component'
     AadharComponent,
     PanComponent,
     BankstatementComponent,
-    PayslipComponent
+    PayslipComponent,
+    UserComponent,
+    SidebarComponent,
+    DashboardComponent,
+    BorrowwerDashboardComponent,
+    BorrowwerSidebarComponent
   ],
   imports: [
     BrowserModule,

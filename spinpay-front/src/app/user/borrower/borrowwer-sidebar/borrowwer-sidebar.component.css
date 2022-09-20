@@ -1,0 +1,24 @@
+.main_div{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    /* background-color: blue; */
+    flex-direction: column;
+}   
+.main_div div{
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px;
+    font-size: 20px;
+    align-items: center;
+    align-content: center;
+    color: white;
+}
+.main_div div:hover{
+    background-color: #43B5D8;
+}
+
+.link{
+   text-decoration: none;
+   color: white;
+}
